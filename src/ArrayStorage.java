@@ -6,7 +6,7 @@ public class ArrayStorage {
 
     void clear() {
         int i = 0;
-        while (storage[i] != null) {
+        while (i < storage.length && storage[i] != null) {
             storage[i] = null;
             i++;
         }
