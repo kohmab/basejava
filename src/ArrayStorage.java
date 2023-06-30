@@ -8,12 +8,13 @@ public class ArrayStorage {
 
     void clear() {
         for (int i = 0; i < this.size; i++)
-            storage[i] = null;
+            this.storage[i] = null;
         this.size = 0;
     }
 
     void save(Resume r) {
-
+        this.storage[size] = r;
+        this.size ++;
     }
 
     Resume get(String uuid) {
