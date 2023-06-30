@@ -7,7 +7,7 @@ public class ArrayStorage {
     private int emptyPosition = 0;
 
     /**
-     * @return index of the index of resume with given uuid
+     * @return index of resume with given uuid
      * if not found returns -1
      */
     private int find(String uuid) {
