@@ -18,6 +18,9 @@ public class ArrayStorage {
     }
 
     Resume get(String uuid) {
+        for (int i = 0; i <= this.size; i++)
+            if (this.storage[i].uuid.equals(uuid))
+                return this.storage[i];
         return null;
     }
 
