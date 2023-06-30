@@ -6,6 +6,19 @@ public class ArrayStorage {
 
     private int lastIndex = 0;
 
+
+    /**
+     * @return index of the index of resume with given uuid
+     * if not found returns -1
+     */
+    private int find(String uuid) {
+        for (int i = 0; i <= this.lastIndex; i++)
+            if (this.storage[i].uuid.equals(uuid))
+                return i;
+        return -1;
+
+    }
+
     void clear() {
         for (int i = 0; i < this.lastIndex; i++)
             this.storage[i] = null;
@@ -18,22 +31,19 @@ public class ArrayStorage {
     }
 
     Resume get(String uuid) {
-        for (int i = 0; i <= this.lastIndex; i++)
-            if (this.storage[i].uuid.equals(uuid))
-                return this.storage[i];
-        return null;
+        int i = this.find(uuid);
+        return (i > 0) ? storage[i] : null;
     }
 
     void delete(String uuid) {
-        for (int i = 0; i <= this.lastIndex; i++) {
-            if (this.storage[i].uuid.equals(uuid)) {
-                for (int j = i; j < this.lastIndex; j++) {
-                    this.storage[j] = this.storage[j + 1];
-                }
-                this.lastIndex--;
-                return;
-            }
+        int i = this.find(uuid);
+        if (i < 0)
+            return;
+        // TODO: fix the case when find == lastIndex
+        for (int j = i; j < this.lastIndex; j++) {
+            this.storage[j] = this.storage[j + 1];
         }
+        this.lastIndex--;
     }
 
 
