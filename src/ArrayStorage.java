@@ -4,33 +4,33 @@
 public class ArrayStorage {
     Resume[] storage = new Resume[10000];
 
-    private int size = 0;
+    private int lastIndex = 0;
 
     void clear() {
-        for (int i = 0; i < this.size; i++)
+        for (int i = 0; i < this.lastIndex; i++)
             this.storage[i] = null;
-        this.size = 0;
+        this.lastIndex = 0;
     }
 
     void save(Resume r) {
-        this.storage[size] = r;
-        this.size++;
+        this.storage[lastIndex] = r;
+        this.lastIndex++;
     }
 
     Resume get(String uuid) {
-        for (int i = 0; i <= this.size; i++)
+        for (int i = 0; i <= this.lastIndex; i++)
             if (this.storage[i].uuid.equals(uuid))
                 return this.storage[i];
         return null;
     }
 
     void delete(String uuid) {
-        for (int i = 0; i <= this.size; i++) {
+        for (int i = 0; i <= this.lastIndex; i++) {
             if (this.storage[i].uuid.equals(uuid)) {
-                for (int j = i; j < this.size; j++) {
+                for (int j = i; j < this.lastIndex; j++) {
                     this.storage[j] = this.storage[j + 1];
                 }
-                this.size--;
+                this.lastIndex--;
                 return;
             }
         }
@@ -45,6 +45,7 @@ public class ArrayStorage {
     }
 
     int size() {
+
         return 0;
     }
 }
