@@ -40,11 +40,11 @@ public class ArrayStorage {
         int i = this.find(uuid);
         if (i < 0)
             return;
-        // TODO: fix the case when find == lastIndex
         for (int j = i; j < this.emptyPosition; j++) {
             this.storage[j] = this.storage[j + 1];
         }
         this.emptyPosition--;
+        this.storage[emptyPosition] = null;
     }
 
 
