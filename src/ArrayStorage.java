@@ -6,6 +6,14 @@ public class ArrayStorage {
 
     private int emptyPosition = 0;
 
+    private void movePositionBy(int step){
+        this.emptyPosition += step;
+        if (this.emptyPosition < 0)
+            this.emptyPosition = 0;
+        if (this.emptyPosition >= this.storage.length)
+            this.emptyPosition = this.storage.length - 1;
+    }
+
     /**
      * @return index of resume with given uuid
      * if not found returns -1
@@ -28,7 +36,7 @@ public class ArrayStorage {
 
     void save(Resume r) {
         this.storage[emptyPosition] = r;
-        this.emptyPosition++;
+        this.movePositionBy(1);
     }
 
     Resume get(String uuid) {
@@ -43,7 +51,7 @@ public class ArrayStorage {
         for (int j = i; j < this.emptyPosition; j++) {
             this.storage[j] = this.storage[j + 1];
         }
-        this.emptyPosition--;
+        this.movePositionBy(-1);
         this.storage[emptyPosition] = null;
     }
 
