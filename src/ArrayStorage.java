@@ -2,7 +2,7 @@
  * Array based storage for Resumes
  */
 public class ArrayStorage {
-    Resume[] storage = new Resume[1];
+    Resume[] storage = new Resume[10000];
 
     private int emptyPosition = 0;
     private boolean isFilled = false;
@@ -62,8 +62,8 @@ public class ArrayStorage {
         for (int j = i; j < this.emptyPosition; j++) {
             this.storage[j] = this.storage[j + 1];
         }
-        this.storage[emptyPosition] = null;
         this.movePositionBy(-1);
+        this.storage[emptyPosition] = null;
     }
 
 
